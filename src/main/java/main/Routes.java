@@ -9,7 +9,7 @@ public class Routes implements SparkApplication {
   }
   @Override
   public void init() {
-    Spark.get("/ping", (req, resp) -> "ponga");
+    Spark.get("/ping", (req, resp) -> "pongaaaaa");
   }
 
 }
