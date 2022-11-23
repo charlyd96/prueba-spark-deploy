@@ -44,7 +44,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>main.Routes</mainClass>     // specify your main class here
+                            <mainClass>main.main</mainClass>     // specify your main class here
                         </manifest>
                     </archive>
                 </configuration>
