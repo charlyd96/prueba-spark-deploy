@@ -1,9 +1,6 @@
 package infraestructura;
 
-import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
-
-public class servicio implements WithGlobalEntityManager, TransactionalOps {
+public class servicio {
   PruebaRepositorio repo = new PruebaRepositorio(Prueba.class);
   public void crear() {
 
