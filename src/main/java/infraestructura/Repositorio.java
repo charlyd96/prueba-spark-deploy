@@ -1,12 +1,10 @@
 package infraestructura;
 
-import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public abstract class Repositorio<T> implements WithGlobalEntityManager {
+public abstract class Repositorio<T> {
 
   private Class<T> type;
 
@@ -15,30 +13,32 @@ public abstract class Repositorio<T> implements WithGlobalEntityManager {
   }
 
   public void agregar(Object unObjeto) {
-    entityManager().persist(unObjeto);
-    entityManager().flush();
+    EntityManagerHelper.beginTransaction();
+    EntityManagerHelper.entityManager().persist(unObjeto);
+    EntityManagerHelper.entityManager().flush();
+    EntityManagerHelper.commit();
   }
 
   public void modificar(Object unObjeto) {
-    entityManager().persist(unObjeto);
-    entityManager().flush();
+    EntityManagerHelper.entityManager().persist(unObjeto);
+    EntityManagerHelper.entityManager().flush();
   }
 
   public void eliminar(Object unObjeto) {
-    entityManager().remove(unObjeto);
-    entityManager().flush();
+    EntityManagerHelper.entityManager().remove(unObjeto);
+    EntityManagerHelper.entityManager().flush();
   }
 
   public List<T> buscarTodos() {
-    CriteriaBuilder builder = entityManager().getCriteriaBuilder();
+    CriteriaBuilder builder = EntityManagerHelper.entityManager().getCriteriaBuilder();
     CriteriaQuery<T> critera = builder.createQuery(type);
     critera.from(type);
-    List<T> entities =  entityManager().createQuery(critera).getResultList();
+    List<T> entities =  EntityManagerHelper.entityManager().createQuery(critera).getResultList();
     return entities;
   }
 
   public T buscar(int id) {
-    return  entityManager().find(type, (long) id);
+    return  EntityManagerHelper.entityManager().find(type, (long) id);
   }
 
 }
