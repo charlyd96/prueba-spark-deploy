@@ -4,7 +4,10 @@ import spark.Spark;
 
 public class main {
   public static void main(String[] args) {
-    //Spark.port(8080);
+    System.getenv().forEach((k,v) -> System.out.println("KEY: "+ k +  " - VALUE: " + v));
+    String port = System.getenv("SERVER_PORT");
+    Spark.port(Integer.parseInt(port));
     Spark.get("/ping", (req, resp) -> "pongaaaaa");
+    Spark.init();
   }
 }
