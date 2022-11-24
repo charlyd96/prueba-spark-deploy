@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'prueba-spark-env'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BEBE87660D7E44F9812ED3510226B06F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FA6899FC465C43FC96D1203B83587FF6 }}
           package: '*.jar'
